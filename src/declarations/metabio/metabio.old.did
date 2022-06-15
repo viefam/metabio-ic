@@ -1,0 +1,9 @@
+type PlantData = 
+ record {
+   id: nat;
+   plant: text;
+ };
+service : {
+  contributePlantMeta: (text, nat, nat, text, text, text, text) -> (nat);
+  getPlantmeta: (nat) -> (PlantData);
+}

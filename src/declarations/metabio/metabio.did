@@ -1,3 +1,13 @@
+type PlantMetaId = nat;
+type PlantMeta = 
+ record {
+   created_at: nat;
+   id: PlantMetaId;
+   images: vec text;
+   plant: text;
+   plant_length: nat;
+ };
 service : {
-  contributePlantMeta: (nat, nat, vec text) -> (text);
+  contributePlantMeta: (text, nat, nat, text, text, text, text) -> (nat);
+  getPlantmeta: (nat) -> (PlantMeta);
 }
