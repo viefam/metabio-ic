@@ -11,6 +11,7 @@ module {
 
 	public class PlantMeta (
 		id: PlantMetaId,
+		plant: Text, // Plant ID from Parse
 		created_at: Nat, // timestamp
 		plant_length: Nat,
 		images: Images,
@@ -26,6 +27,14 @@ module {
 
 		public func get_images() : Images {
 			images
+		};
+
+		public func get_plant() : Text {
+			plant
+		};
+
+		public func get_created_at() : Nat {
+			created_at
 		};
 	};
 
