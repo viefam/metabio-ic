@@ -1,11 +1,19 @@
 {
   "canisters": {
+    "metabio": {
+      "main": "src/nfpot/metabio.mo",
+      "type": "motoko"
+    },
     "nfpot": {
       "main": "src/nfpot/main.mo",
       "type": "motoko"
     },
     "mbt": {
       "main": "src/nfpot/mbt.mo",
+      "type": "motoko"
+    },
+    "nfplant": {
+      "main": "src/nfpot/plant.mo",
       "type": "motoko"
     },
     "nfpot_assets": {
