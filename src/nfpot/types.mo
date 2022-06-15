@@ -11,10 +11,10 @@ module {
 
 	public type PlantMeta = {
 		id: PlantMetaId;
+		plant: Text;
 		created_at: Nat; // timestamp
 		plant_length: Nat;
 		images: [Text];
-		status: MetadataStatus;
 	};
 
 	public type UserRewardStatus = {
