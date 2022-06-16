@@ -22,7 +22,8 @@ module {
 	};
 
 	public type UserReward = {
-		id: UserId;
+		id: Nat;
+		user: UserId;
 		plantMeta: PlantMetaId;
 		rewards: Nat;
 		status: UserRewardStatus;
