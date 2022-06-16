@@ -1,4 +1,6 @@
 import Error "mo:base/Error";
+import Principal "mo:base/Principal";
+import MBT "canister:mbtv4";
 import Types "./types";
 import PlantMeta "./plantmeta";
 import PlantMetadata "./plantmetadata";
@@ -8,11 +10,27 @@ import Rewards "./rewards";
 actor MetaBio {
 
 	public type PlantMeta = Types.PlantMeta;
+	// returns tx index or error msg
+	public type TxReceipt = {
+		#Ok: Nat;
+		#Err: {
+			#InsufficientAllowance;
+			#InsufficientBalance;
+			#ErrorOperationStyle;
+			#Unauthorized;
+			#LedgerTrap;
+			#ErrorTo;
+			#Other;
+			#BlockUsed;
+			#AmountTooSmall;
+		};
+	};
 	type RewardStatus = Types.UserRewardStatus;
 	type UserReward = Types.UserReward;
 
 	stable var min_length_ = 50; // Mimimum plant growth to get reward.
 	stable var reward_for_valid_data = 100; 
+	stable var owner_ : Principal = Principal.fromText("ls2am-njdjf-b2lbl-h5tck-7hg2n-uqidg-m2u77-cv642-mhpgx-fspoj-7ae");
 
 	flexible var plantmetadata : PlantMetadata.PlantMetadata = PlantMetadata.PlantMetadata();
 	flexible var rewards : Rewards.Rewards = Rewards.Rewards();
@@ -22,7 +40,7 @@ actor MetaBio {
 		let plantMetaId = plantMetaCounter.generate_new_id();
 		let plantmeta = PlantMeta.PlantMeta(plantMetaId, plant, created_at, plant_length, images);
 		plantmetadata.add(plantmeta);
-		let isValidPlantMeta = auditPlantmeta(plantMetaId);
+		let isValidPlantMeta = await auditPlantmeta(plantMetaId);
 		if (isValidPlantMeta == true) {
 			let rewardId = rewardCounter.generate_new_id();
 			let reward = Reward.Reward(rewardId, msg.caller, plantMetaId, reward_for_valid_data, #pending);
@@ -70,9 +88,22 @@ actor MetaBio {
 		};
 	};
 
-	public shared(msg) func withdrawReward(id: Nat) : async Nat {
-		
-	}
+	public shared(msg) func distributeReward(id: Nat) : async TxReceipt {
+		if (msg.caller != owner_) {
+			return #Err(#Unauthorized);
+		};
+
+		switch (rewards.get(id)) {
+			case (null) {
+				return #Err(#Unauthorized);
+			};
+			case (?reward) {
+				let user_ = reward.get_user();
+				let rewards = reward.get_rewards();	
+				await MBT.transfer(user_, rewards);
+			}
+		};
+	};
 
 	public func auditPlantmeta(id: Nat) : async Bool {
 		switch (plantmetadata.get(id)) {

@@ -8,7 +8,7 @@
       "main": "src/nfpot/main.mo",
       "type": "motoko"
     },
-    "mbt": {
+    "mbtv4": {
       "main": "src/nfpot/mbt.mo",
       "type": "motoko"
     },
