@@ -16,6 +16,8 @@ module {
 		rewards: Nat,
 		status: Status,
 	) {
+		var _status: Status = status;
+
 		public func get_id() : Nat {
 			id
 		};
@@ -29,11 +31,15 @@ module {
 		};
 
 		public func get_status() : Status {
-			status
+			_status
 		};
 
 		public func get_user() : Types.UserId {
 			user
+		};
+
+		public func paid() {
+			_status := #paid;
 		};
 
 	};
