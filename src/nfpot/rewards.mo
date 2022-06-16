@@ -21,6 +21,12 @@ module {
 		public func get(reward_id: Nat): ?Reward {
 			hashMap.get(reward_id)
 		};
+
+		public func paid(reward_id: Nat) {
+			let reward = Option.unwrap(hashMap.get(reward_id));
+			reward.paid();
+			hashMap.put(reward.get_id(), reward);
+		};
 	};
 
 	func isEq(x: Nat, y: Nat): Bool { x == y };
