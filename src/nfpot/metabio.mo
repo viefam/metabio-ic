@@ -23,6 +23,7 @@ actor MetaBio {
 			#Other;
 			#BlockUsed;
 			#AmountTooSmall;
+			#DoubleSpending;
 		};
 	};
 	type RewardStatus = Types.UserRewardStatus;
@@ -35,6 +36,7 @@ actor MetaBio {
 	flexible var plantmetadata : PlantMetadata.PlantMetadata = PlantMetadata.PlantMetadata();
 	flexible var rewards : Rewards.Rewards = Rewards.Rewards();
 
+	// Contribute plant metadata. This function called by MetaBio mobile app - Plant Log Diary feature.
 	public shared(msg) func contributePlantMeta(plant: Text, created_at: Nat, plant_length: Nat, front_img: Text, back_img: Text, left_img: Text, right_img: Text) : async Nat {
 		let images = [front_img, back_img, left_img, right_img];
 		let plantMetaId = plantMetaCounter.generate_new_id();
@@ -49,6 +51,7 @@ actor MetaBio {
 		plantmeta.get_id();
 	};
 
+	// Get plant metadata by ID
 	public func getPlantmeta(id: Nat) : async PlantMeta {
 		switch (plantmetadata.get(id)) {
 			case (null) { 
@@ -66,6 +69,7 @@ actor MetaBio {
     		}
 	};
 
+	// Display reward by ID
 	public shared(msg) func displayReward(id: Nat) : async UserReward {
 		switch (rewards.get(id)) {
 			case (null) {
@@ -88,6 +92,7 @@ actor MetaBio {
 		};
 	};
 
+	// Distribute reward, only can call by owner.
 	public shared(msg) func distributeReward(id: Nat) : async TxReceipt {
 		if (msg.caller != owner_) {
 			return #Err(#Unauthorized);
@@ -98,13 +103,19 @@ actor MetaBio {
 				return #Err(#Unauthorized);
 			};
 			case (?reward) {
+				if (reward.get_status() == #paid) {
+					return #Err(#DoubleSpending);	
+				};
 				let user_ = reward.get_user();
-				let rewards = reward.get_rewards();	
-				await MBT.transfer(user_, rewards);
+				let value = reward.get_rewards();	
+				let txResponse = await MBT.transfer(user_, value);
+				rewards.paid(id);
+				return txResponse;
 			}
 		};
 	};
 
+	// Audit plant metadata.
 	public func auditPlantmeta(id: Nat) : async Bool {
 		switch (plantmetadata.get(id)) {
 			case (null) { 
