@@ -8,6 +8,7 @@ export const idlFactory = ({ IDL }) => {
     'images' : IDL.Vec(IDL.Text),
   });
   return IDL.Service({
+    'auditPlantmeta' : IDL.Func([IDL.Nat], [IDL.Bool], []),
     'contributePlantMeta' : IDL.Func(
         [IDL.Text, IDL.Nat, IDL.Nat, IDL.Text, IDL.Text, IDL.Text, IDL.Text],
         [IDL.Nat],

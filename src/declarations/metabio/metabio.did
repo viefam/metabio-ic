@@ -8,6 +8,7 @@ type PlantMeta =
    plant_length: nat;
  };
 service : {
+  auditPlantmeta: (nat) -> (bool);
   contributePlantMeta: (text, nat, nat, text, text, text, text) -> (nat);
   getPlantmeta: (nat) -> (PlantMeta);
 }

@@ -10,6 +10,7 @@ export interface PlantMeta {
 }
 export type PlantMetaId = bigint;
 export interface _SERVICE {
+  'auditPlantmeta' : ActorMethod<[bigint], boolean>,
   'contributePlantMeta' : ActorMethod<
     [string, bigint, bigint, string, string, string, string],
     bigint,

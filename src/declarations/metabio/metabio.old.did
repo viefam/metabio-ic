@@ -1,9 +1,14 @@
-type PlantData = 
+type PlantMetaId = nat;
+type PlantMeta = 
  record {
-   id: nat;
+   created_at: nat;
+   id: PlantMetaId;
+   images: vec text;
    plant: text;
+   plant_length: nat;
  };
 service : {
+  auditPlantmeta: (nat) -> (bool);
   contributePlantMeta: (text, nat, nat, text, text, text, text) -> (nat);
-  getPlantmeta: (nat) -> (PlantData);
+  getPlantmeta: (nat) -> (PlantMeta);
 }
