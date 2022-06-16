@@ -23,6 +23,11 @@ MetaBio is a Web3 application to connect gardeners, farmers to crypto world. We 
 
 🌎 Users can earn carbon credit and save the Earth
 
+## Architecture Design
+
+![metabio-architecture](https://user-images.githubusercontent.com/4486806/174105227-c2fd0025-5b1d-48f8-96db-1bde625d378f.png)
+
+
 ## Implementation
 
 ### Implemented Canisters
