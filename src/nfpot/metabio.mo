@@ -2,10 +2,13 @@ import Error "mo:base/Error";
 import Types "./types";
 import PlantMeta "./plantmeta";
 import PlantMetadata "./plantmetadata";
+import Rewards "./rewards";
 
 actor MetaBio {
 
 	public type PlantMeta = Types.PlantMeta;
+
+	stable var min_length_ = 50; // Mimimum plant growth to get reward.
 
 	flexible var plantmetadata : PlantMetadata.PlantMetadata = PlantMetadata.PlantMetadata();
 	public shared(msg) func contributePlantMeta(plant: Text, created_at: Nat, plant_length: Nat, front_img: Text, back_img: Text, left_img: Text, right_img: Text) : async Nat {
@@ -34,7 +37,19 @@ actor MetaBio {
 	};
 
 	public func auditPlantmeta(id: Nat) : async Bool {
-		true
+		switch (plantmetadata.get(id)) {
+			case (null) { 
+				throw Error.reject("No metadata for plant")
+			};
+      			case (?plantmeta) {
+				let length = plantmeta.get_plant_length();
+				if(length > min_length_) {
+					return true;
+				};
+
+				false
+			}
+    		}
 	};
 
 	flexible object plantMetaCounter = {
