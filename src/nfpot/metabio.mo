@@ -10,7 +10,6 @@ import Rewards "./rewards";
 actor MetaBio {
 
 	public type PlantMeta = Types.PlantMeta;
-	// returns tx index or error msg
 	public type TxReceipt = {
 		#Ok: Nat;
 		#Err: {
@@ -29,7 +28,7 @@ actor MetaBio {
 	type RewardStatus = Types.UserRewardStatus;
 	type UserReward = Types.UserReward;
 
-	stable var min_length_ = 50; // Mimimum plant growth to get reward.
+	stable var min_length_ = 50; // Mimimum plant growth to get reward. TODO: get this value from Pot type.
 	stable var reward_for_valid_data = 100; 
 	stable var owner_ : Principal = Principal.fromText("ls2am-njdjf-b2lbl-h5tck-7hg2n-uqidg-m2u77-cv642-mhpgx-fspoj-7ae");
 
@@ -37,6 +36,7 @@ actor MetaBio {
 	flexible var rewards : Rewards.Rewards = Rewards.Rewards();
 
 	// Contribute plant metadata. This function called by MetaBio mobile app - Plant Log Diary feature.
+	// TODO: need to verify whether the plant having any pot.
 	public shared(msg) func contributePlantMeta(plant: Text, created_at: Nat, plant_length: Nat, front_img: Text, back_img: Text, left_img: Text, right_img: Text) : async Nat {
 		let images = [front_img, back_img, left_img, right_img];
 		let plantMetaId = plantMetaCounter.generate_new_id();
