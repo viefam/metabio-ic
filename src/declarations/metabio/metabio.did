@@ -1,0 +1,47 @@
+type UserRewardStatus = 
+ variant {
+   failed;
+   paid;
+   pending;
+ };
+type UserReward = 
+ record {
+   id: nat;
+   plantMeta: PlantMetaId;
+   rewards: nat;
+   status: UserRewardStatus;
+   user: UserId;
+ };
+type UserId = principal;
+type TxReceipt = 
+ variant {
+   Err:
+    variant {
+      AmountTooSmall;
+      BlockUsed;
+      ErrorOperationStyle;
+      ErrorTo;
+      InsufficientAllowance;
+      InsufficientBalance;
+      LedgerTrap;
+      Other;
+      Unauthorized;
+    };
+   Ok: nat;
+ };
+type PlantMetaId = nat;
+type PlantMeta = 
+ record {
+   created_at: nat;
+   id: PlantMetaId;
+   images: vec text;
+   plant: text;
+   plant_length: nat;
+ };
+service : {
+  auditPlantmeta: (nat) -> (bool);
+  contributePlantMeta: (text, nat, nat, text, text, text, text) -> (nat);
+  displayReward: (nat) -> (UserReward);
+  distributeReward: (nat) -> (TxReceipt);
+  getPlantmeta: (nat) -> (PlantMeta);
+}
