@@ -21,7 +21,7 @@ MetaBio is a Web3 application to connect gardeners, farmers to crypto world. We 
 
 🚀 MetaBio also supports metaverses, gamefi, defi, and socialfi builders to consume and reuse NFT backed by real plant’s metadata that enhances user experiences.
 
-🌎 User can earn carbon credit and save the Earth
+🌎 Users can earn carbon credit and save the Earth
 
 ## Implementation
 
