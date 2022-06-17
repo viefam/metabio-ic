@@ -464,4 +464,3 @@ actor Dip20Token {
 		allowanceEntries := [];
 	};
 }
-
