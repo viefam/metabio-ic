@@ -97,7 +97,7 @@ dfx identity use gardener
 dfx canister call metabio contributePlantMeta '("9OYATqDnq5", 1655375202615, 60, "https://images.viefam.com/stag/5482d443ce8f69463d6ef431c21f6d6a_front_315cf7a0-19d5-4614-9596-e13abd9b09a8.jpg", "https://images.viefam.com/stag/fe9c3efba7e3b370f71ecbb2879fedbe_left_07703946-8173-480f-bd0f-aabdede1df67.jpg", "https://images.viefam.com/stag/0f4e5795676dc3865b8f5bea8431ab64_back_6223f4f4-988b-4227-891c-afe4bdac2391.jpg", "https://images.viefam.com/stag/e3c076977719bc9ed3fa363b8fbed760_right_452d2966-1e20-4356-98f2-394df820af73.jpg")'
 ```
 
-It should show the reward ID then.
+*It should show the reward ID then.*
 
 ```
 (1 : nat)
@@ -109,7 +109,7 @@ It should show the reward ID then.
 dfx canister call metabio displayReward '(1)'
 ```
 
-It should display the pending reward
+*It should display the pending reward*
 
 ```
 (
@@ -142,10 +142,10 @@ dfx canister call metabio distributeReward '(1)'
 dfx identity get-principal
 ```
 
-It should return principal. Example: `jd2i6-4skfe-sgnim-636u7-cysgv-ixwny-kgkjc-aoadx-sg542-lguic-6qe`
+*It should return principal. Example: `jd2i6-4skfe-sgnim-636u7-cysgv-ixwny-kgkjc-aoadx-sg542-lguic-6qe`*
 
 ```
 dfx canister call mbtv4 balanceOf '(principal "jd2i6-4skfe-sgnim-636u7-cysgv-ixwny-kgkjc-aoadx-sg542-lguic-6qe")'
 ```
 
-It should display 100 or increase to 100.
+*It should display 100 or increase to 100.*
