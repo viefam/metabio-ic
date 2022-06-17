@@ -25,8 +25,7 @@ MetaBio is a Web3 application to connect gardeners, farmers to crypto world. We 
 
 ## Architecture Design
 
-![metabio-architecture](https://user-images.githubusercontent.com/4486806/174105227-c2fd0025-5b1d-48f8-96db-1bde625d378f.png)
-
+![metabio-architecturev2](https://user-images.githubusercontent.com/4486806/174203740-dc4dc9e8-3c7b-423c-9d34-4360599d72d1.png)
 
 ## Implementation
 
@@ -44,6 +43,7 @@ MetaBio is a Web3 application to connect gardeners, farmers to crypto world. We 
 
 ### Implementing Canisters
 
+- [ ] metabio_dao - MetaBio DAO 
 - [ ] metabio_mkp - MetaBio Marketplace
 
   - [ ] Buy and sell NFPot
