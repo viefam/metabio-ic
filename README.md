@@ -156,12 +156,25 @@ We are going to implement the MetaBio app with following features
 
 - [ ] Connect Web2 users to Internet Computer: it makes easier for non-crypto users can connect to crypto world
 
+![login-screen](https://user-images.githubusercontent.com/4486806/174244747-7a70ae10-383b-4cb4-a4c8-ddc149f18b44.png)
+
+
 - [ ] Buy NFPot and NFPLant on Marketplace
+
+![Screen Shot 2022-06-17 at 14 09 13](https://user-images.githubusercontent.com/4486806/174244891-e42eb67c-696b-4a27-b17c-e4846011e5af.png)
+
 
 - [ ] Mint plant to NFPot
 
-- [ ] Plant to Earn
+![Screen Shot 2022-06-17 at 14 10 03](https://user-images.githubusercontent.com/4486806/174245037-a369190a-eac5-40aa-93c5-3cb251356e88.png)
 
 - [ ] Withdraw reward
 
 - [ ] Carbon Credit
+
+
+In Supernova Hackathon, we haven't integrated yet our mobile app to Internet Computer because iternet-identity haven't supported yet authetication (https://github.com/dfinity/internet-identity/issues/340, https://github.com/dfinity/internet-identity/issues/332). Another wallet or solution still haven't supported mobile application yet. 
+
+However, we had the prototype video (https://drive.google.com/file/d/1Ky1aIM3PbbabwFdjyUjXSkz2edAbHbKc/view) about MetaBio that we try to integrate with BNB chain. 
+
+*P/s: We are trying the solution that using WebView to authenticate. And we will have the mobile app on IC soon*
