@@ -149,3 +149,19 @@ dfx canister call mbtv4 balanceOf '(principal "jd2i6-4skfe-sgnim-636u7-cysgv-ixw
 ```
 
 *It should display 100 or increase to 100.*
+
+## Mobile App
+
+We are going to implement the MetaBio app with following features
+
+- [ ] Connect Web2 users to Internet Computer: it makes easier for non-crypto users can connect to crypto world
+
+- [ ] Buy NFPot and NFPLant on Marketplace
+
+- [ ] Mint plant to NFPot
+
+- [ ] Plant to Earn
+
+- [ ] Withdraw reward
+
+- [ ] Carbon Credit
