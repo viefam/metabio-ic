@@ -71,6 +71,13 @@ dfx help
 dfx config --help
 ```
 
+## Deployed Canisters
+
+- mbtv4: https://a4gq6-oaaaa-aaaab-qaa4q-cai.raw.ic0.app/?id=2xiao-caaaa-aaaak-qaqya-cai
+- metabio: https://a4gq6-oaaaa-aaaab-qaa4q-cai.raw.ic0.app/?id=2qjg2-pyaaa-aaaak-qaqyq-cai
+- nfplant: https://a4gq6-oaaaa-aaaab-qaa4q-cai.raw.ic0.app/?id=2zkng-zqaaa-aaaak-qaqza-cai
+- nfpot: https://a4gq6-oaaaa-aaaab-qaa4q-cai.raw.ic0.app/?id=6p6vz-qiaaa-aaaak-qaqbq-cai
+
 ## Demo
 
 - Change MetaBio owner principal at https://github.com/viefam/metabio-ic/blob/develop/src/nfpot/metabio.mo#L33 and https://github.com/viefam/metabio-ic/blob/develop/src/nfpot/metabio.mo#L33 as your preferred one.
