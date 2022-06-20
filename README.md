@@ -92,6 +92,12 @@ dfx start --background
 dfx deploy
 ```
 
+- Transfer MetaBio Token to metabio canister 
+
+```
+dfx canister --network ic call mbtv4 balanceOf '(principal "<replace metabio_canister_id> here", 1000500)'
+```
+  
 - Create [gardener identity](https://internetcomputer.org/docs/current/references/cli-reference/dfx-identity) and change to it. Do not use the owner principal.
 
 ```
